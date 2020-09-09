@@ -1,0 +1,88 @@
+%focus-style {
+  @apply shadow outline-none border-gray-500;
+
+  box-shadow: 0 0 0 0.2rem theme("colors.gray.200");
+  background-clip: padding-box;
+}
+
+.form-inputs {
+  @apply mb-6;
+}
+
+form input:focus {
+  @extend %focus-style;
+}
+
+form input:hover {
+  @extend %focus-style;
+}
+
+form select:focus {
+  @apply outline-none border-gray-400;
+  box-shadow: 0 0 0 0.2rem theme("colors.gray.100");
+  background-clip: padding-box;
+}
+
+form input:focus {
+  @apply shadow outline-none border-gray-500;
+  box-shadow: 0 0 0 0.2rem theme("colors.gray.200");
+  background-clip: padding-box;
+}
+
+form {
+  // @apply shadow-md p-6 bg-white;
+}
+
+form input {
+  // @apply text-gray-700 border border-gray-400 rounded px-3 leading-tight bg-white shadow-inner mb-6;
+  @apply w-full text-gray-700 border border-gray-400 rounded px-3 leading-tight bg-white shadow-inner;
+  padding-top: .65rem;
+  padding-bottom: .65rem;
+}
+
+form label {
+  @apply block text-gray-700 text-sm font-bold mb-2;
+}
+
+form select {
+  @apply appearance-none py-3 px-4 pr-8 block w-full bg-white border border-gray-300 text-gray-700 rounded leading-tight;
+  -webkit-appearance: none;
+}
+
+form input[type="checkbox"] {
+  @apply inline-block mr-2 leading-normal;
+  width: .65rem !important;
+}
+
+form input[type="radio"] {
+  // @apply flex items-center justify-start;
+  @apply inline-block mr-2 leading-normal;
+}
+
+form input[type="submit"] {
+  @apply mb-0 mt-3 btn-default;
+}
+
+.hint {
+  @apply hidden;
+}
+
+.error_notification {
+  @apply hidden;
+}
+
+.error {
+  @apply text-red-500 text-xs italic;
+}
+
+.input-group {
+  @apply mb-6;
+}
+
+.form-actions {
+  @apply mb-6;
+}
+
+.form-links {
+  @apply inline-block;
+}
