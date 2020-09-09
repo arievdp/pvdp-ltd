@@ -3,6 +3,6 @@ class Animal < ApplicationRecord
   validates :birth_id, presence: true, uniqueness: true
 
   def calves
-    Animal.where(dam_birth_id: self.birth_id)
+    Animal.where(dam_birth_id: birth_id)
   end
 end

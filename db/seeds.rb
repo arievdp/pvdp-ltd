@@ -67,7 +67,7 @@ data.each do |d|
         # calf_birth_date: d[:calf_birth_date],
         # calf_sex: d[:calf_sex],
         # calf_fate: d[:calf_fate],
-        dam_birth_id: d[:animal_birth_id],
+        dam_birth_id: d[:animal_birth_id_1],
         dam_cow_number: d[:animal_animal_id],
         # sire_birth_id: d[:sire_sire_id],
         # sire_name: d[:sire_name],
