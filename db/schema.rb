@@ -10,10 +10,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_09_041704) do
+ActiveRecord::Schema.define(version: 2020_09_09_051257) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "animals", force: :cascade do |t|
+    t.bigint "farm_id", null: false
+    t.string "birth_id"
+    t.string "tag_number"
+    t.string "birth_date"
+    t.string "bw_value"
+    t.string "bw_reliability"
+    t.string "pw_value"
+    t.string "pw_reliability"
+    t.string "a2_status"
+    t.string "expected_calving_date"
+    t.string "calving_date"
+    t.string "dam_id"
+    t.string "dam_tag_number"
+    t.string "sire_id"
+    t.string "sire_name"
+    t.string "sex"
+    t.string "fate"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["farm_id"], name: "index_animals_on_farm_id"
+  end
+
+  create_table "employments", force: :cascade do |t|
+    t.bigint "farm_id", null: false
+    t.bigint "user_id", null: false
+    t.date "start_date"
+    t.date "end_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["farm_id"], name: "index_employments_on_farm_id"
+    t.index ["user_id"], name: "index_employments_on_user_id"
+  end
+
+  create_table "farms", force: :cascade do |t|
+    t.string "code"
+    t.string "nickname"
+    t.string "address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -30,4 +72,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_041704) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "animals", "farms"
+  add_foreign_key "employments", "farms"
+  add_foreign_key "employments", "users"
 end

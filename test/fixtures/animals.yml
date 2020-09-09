@@ -1,0 +1,39 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  farm: one
+  birth_id: MyString
+  tag_number: MyString
+  birth_date: MyString
+  bw_value: MyString
+  bw_reliability: MyString
+  pw_value: MyString
+  pw_reliability: MyString
+  a2_status: MyString
+  expected_calving_date: MyString
+  calving_date: MyString
+  dam_id: MyString
+  dam_tag_number: MyString
+  sire_id: MyString
+  sire_name: MyString
+  sex: MyString
+  fate: MyString
+
+two:
+  farm: two
+  birth_id: MyString
+  tag_number: MyString
+  birth_date: MyString
+  bw_value: MyString
+  bw_reliability: MyString
+  pw_value: MyString
+  pw_reliability: MyString
+  a2_status: MyString
+  expected_calving_date: MyString
+  calving_date: MyString
+  dam_id: MyString
+  dam_tag_number: MyString
+  sire_id: MyString
+  sire_name: MyString
+  sex: MyString
+  fate: MyString
