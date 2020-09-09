@@ -10,8 +10,9 @@ class CreateAnimals < ActiveRecord::Migration[6.0]
       t.integer :pw_value
       t.integer :pw_reliability
       t.string :a2_status
+      t.string :sex
       t.string :fate
-      t.string :pre_calving_expected_calving_date
+      t.string :expected_calving_date
       t.string :calving_date
       t.string :calf_birth_id
       t.string :calf_birth_date
