@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html class="antialiased">
   <%= render "shared/head" %>
-
-  <body class="font-sans font-normal leading-normal text-gray-800 bg-white">
+  <body class="bg-gray-100">
     <%= render "shared/flash_notice" %>
-    <%= render "shared/header" %>
-
-    <main class="px-4 lg:px-10">
-      <%= content_for?(:content) ? yield(:content) : yield %>
-    </main>
+    <%= render 'shared/base/navbar' %>
+    <%= content_for?(:content) ? yield(:content) : yield %>
+    <%= render 'shared/base/end' %>
   </body>
 </html>

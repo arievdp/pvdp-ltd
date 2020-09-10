@@ -7119,6 +7119,11 @@ svgo@^1.0.0:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
+tailwindcss-animatecss@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/tailwindcss-animatecss/-/tailwindcss-animatecss-1.0.7.tgz#7ee39cec68842692be27c31735a73c3bb4b7cb83"
+  integrity sha512-PSGZDYSOqRNm+C/hJTMfw1pj4nprPQfbNh/wrYDC4G0R9dqtepPncIlKAFNSl7nTUFxH9ynhvBwcIul093ceXw==
+
 tailwindcss@^1.8.5:
   version "1.8.5"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-1.8.5.tgz#3b4624530b5fd71688fd04d16d8bd8c8d56834de"
