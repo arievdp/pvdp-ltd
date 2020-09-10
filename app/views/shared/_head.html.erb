@@ -1,16 +1,12 @@
  <head>
-  <title>
-    <% if content_for?(:title) %>
-      <%= yield :title %> |
-    <% end %>
-    New App
-  </title>
+  <title>Potae & Van der Poel LTD</title>
 
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" href="./img/fav.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v5.12.1/css/pro.min.css">
   <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_pack_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag  'application', 'data-turbolinks-track': 'reload' %>

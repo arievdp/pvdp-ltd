@@ -9,21 +9,50 @@
 require 'smarter_csv'
 
 p 'Creating farms'
-farm = Farm.create!(code: "PQVV-SN54")
+p '-----------------------'
+sn_54 = Farm.create!(code: "PQVV-SN54")
+sn_25 = Farm.create!(code: "HKYM-SN25")
 
+p 'Done!'
+p 'Creating users'
+p '-----------------------'
+user = User.create(
+  name: "Mary-Anne",
+  email: "test@test.com",
+  password: "123456",
+  admin: true
+)
+
+p 'Done!'
+p 'Creating employments'
+p '-----------------------'
+
+Employment.create!(
+  user: user,
+  farm: sn_54
+)
+
+Employment.create!(
+  user: user,
+  farm: sn_25
+)
+
+p 'Done!'
 p 'Reading CSV'
+p '-----------------------'
 data = SmarterCSV.process("./app/assets/csv/PQVV-SN54 ORANGE PQVV HERD PROFILE 20_21 PVDP APP-09 Sep 2020.csv")
+p 'Done!'
 
 p 'Creating animals'
-
+p '-----------------------'
 data.each do |d|
   begin
     if d[:animal_birth_id_1].present?
       Animal.create!(
-        farm: farm,
+        farm: sn_54,
         birth_id: d[:animal_birth_id_1],
         cow_number: d[:animal_animal_id],
-        birth_date: "20#{d[:animal_birth_id_1].match(/[0-9]{2}/)}",
+        birth_date: DateTime.strptime("20#{d[:animal_birth_id_1].match(/[0-9]{2}/)}", '%Y'),
         bw_value: d[:calf_bw_2_value],
         bw_reliability: d[:animal_bw_1_relability],
         pw_value: d[:animal_pw_value],
@@ -40,7 +69,7 @@ data.each do |d|
         dam_cow_number: d[:"dam_cow_no."],
         sire_birth_id: d[:sire_sire_id],
         sire_name: d[:sire_name],
-        sex: "F"
+        sex: "F",
       )
     end
   rescue ActiveRecord::RecordInvalid
@@ -50,7 +79,7 @@ data.each do |d|
   if d[:calf_birth_id_2].present?
     begin
       Animal.create!(
-        farm: farm,
+        farm: sn_54,
         birth_id: d[:calf_birth_id_2],
         # cow_number: d[:animal_animal_id],
         birth_date: d[:calf_birth_date],
@@ -77,3 +106,6 @@ data.each do |d|
     end
   end
 end
+
+p 'Done!'
+p 'Seeding succesful!'

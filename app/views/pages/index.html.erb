@@ -1,0 +1,33 @@
+<!-- start wrapper -->
+<div class="h-screen flex flex-row flex-wrap">
+
+  <%= render 'shared/base/sidebar' %>
+
+  <!-- start content -->
+  <div class="bg-gray-100 flex-1 p-6 md:mt-16">
+
+    <!-- congrats & summary -->
+    <div class="grid grid-cols-3 lg:grid-cols-1 gap-5">
+      <%= render 'shared/index/congrats' %>
+      <%= render 'shared/index/summary' %>
+    </div>
+    <!-- end congrats & summary -->
+
+    <!-- status -->
+    <%= render 'shared/index/status' %>
+    <!-- end status -->
+
+    <!-- best seller & traffic -->
+    <div class="grid grid-cols-2 lg:grid-cols-1 gap-5 mt-5">
+      <%= render 'shared/index/bestSeller' %>
+      <%= render 'shared/index/recent_order' %>
+    </div>
+    <!-- end best seller & traffic -->
+
+  </div>
+  <!-- end content -->
+
+</div>
+<!-- end wrapper -->
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
