@@ -31,7 +31,6 @@
 /public/packs
 /public/packs-test
 /node_modules
-/app/assets/csv
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
