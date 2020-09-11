@@ -1,6 +1,8 @@
-<tr>
-  <th class="mb-4 text-xs font-extrabold tracking-wider flex flex-row items-center"><%= c.birth_id %></th>
-  <th class="mb-4 text-xs font-extrabold tracking-wider text-right"><%= c.birth_date.to_date %></th>
-  <th class="mb-4 text-xs font-extrabold tracking-wider text-right"><%= c.bw_value %></th>
-  <th class="mb-4 text-xs font-extrabold tracking-wider text-right"><%= c.fate %></th>
+<tr class="">
+  <td class="py-4 text-sm text-gray-600 flex flex-row items-center"><%= c.birth_date.to_date %></th>
+  <td class="py-4 text-xs text-gray-600"><%= c.birth_id %></th>
+  <td class="py-4 text-xs text-gray-600"><%= c.dam_cow_number %></th>
+  <td class="py-4 text-xs text-gray-600"><%= c.dam_birth_id %></th>
+  <td class="py-4 text-xs text-gray-600"><%= c.bw_value %></th>
+  <td class="py-4 text-xs text-gray-600"><%= c.fate %></th>
 </tr>

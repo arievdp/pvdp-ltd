@@ -1,32 +1,32 @@
 <div class="card">
 
     <div class="card-body">
-      <h2 class="font-bold text-lg mb-10">Recent Calfs</h2>
+      <div class="flex flex-row justify-between items-center">
+        <h1 class="font-extrabold text-lg">Recent calves</h1>
+        <a href="#" class="btn-gray text-sm">view all</a>
+      </div>
 
-    <!-- start a table -->
-    <table class="table-fixed w-full">
+    <table class="table-auto w-full mt-5 text-left">
 
-        <!-- table head -->
-        <thead class="text-left">
-          <tr>
-              <th class="w:1/4 pb-10 text-sm font-extrabold tracking-wide flex flex-row">Calf-ID</th>
-              <th class="w:1/4 pb-10 text-sm font-extrabold tracking-wide text-right">Birth Date</th>
-              <th class="w:1/4 pb-10 text-sm font-extrabold tracking-wide text-right">BW</th>
-              <th class="w:1/4 pb-10 text-sm font-extrabold tracking-wide text-right">Fate</th>
-          </tr>
-        </thead>
-        <!-- end table head -->
+      <thead class="">
+        <tr>
+            <th class="py-4 font-extrabold text-sm">Date</th>
+            <th class="py-4 font-extrabold text-sm">Calf ID</th>
+            <th class="py-4 font-extrabold text-sm">Dam #</th>
+            <th class="py-4 font-extrabold text-sm">Dam ID</th>
+            <th class="py-4 font-extrabold text-sm">BW</th>
+            <th class="py-4 font-extrabold text-sm">Fate</th>
+        </tr>
+      </thead>
 
-        <!-- table body -->
-        <tbody class="text-left text-gray-600">
-          <% @farm.calves.order(:birth_date).first(5).each do |c| %>
-            <%= render 'shared/farms/recent-calf-card', c: c %>
-          <% end %>
-        </tbody>
-        <!-- end table body -->
+      <tbody class="">
+        <% @farm.calves.order(:birth_date).first(8).each do |c| %>
+          <%= render 'shared/farms/recent-calf-card', c: c %>
+        <% end %>
+      </tbody>
 
     </table>
-    <!-- end a table -->
+
     </div>
 
 </div>

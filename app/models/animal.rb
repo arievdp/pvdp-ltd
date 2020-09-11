@@ -3,8 +3,12 @@ class Animal < ApplicationRecord
   validates :birth_id, presence: true, uniqueness: true
   before_create :heifer?
 
-  def calves
-    Animal.where(dam_birth_id: birth_id)
+  def calved?
+    calf_birth_date.present?
+  end
+
+  def alive?
+    fate != 'Died'
   end
 
   private
@@ -13,11 +17,11 @@ class Animal < ApplicationRecord
     current_year = Time.current.year
     a = self
     if a[:birth_date].to_date.year == current_year
-      a[:status] = 'calf'
+      a[:status] = 'Calf'
     elsif a[:birth_date].to_date.year == (current_year - 1)
-      a[:status] = 'yearling'
+      a[:status] = 'Yearling'
     else
-      a[:status] = 'heifer'
+      a[:status] = 'Heifer'
     end
   end
 end

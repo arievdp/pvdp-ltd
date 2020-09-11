@@ -1,42 +1,40 @@
 class FarmsController < ApplicationController
-  before_action :set_farm
+  # Controller for farms and farm stats
+  before_action :set_farm, only: :show
 
   def show
-    @year = Date.today.year
-    @year_minus_2 = (@year - 2)
+    @farms = Farm.all
+
+    # Set year for views
+    @year_minus_2 = (Date.today.year - 2)
+
+    # Set animal numbers
     @animals = @farm.animals
-    @animals_calved = @farm.animals_calved
-    @animals_calved_count = @animals_calved.count
-
+    @calves = @farm.calves
     @heifers = @farm.heifers
-    @heifers_count = @heifers.count
-    @heifer_deaths = @heifers.where(fate: "Died")
-    @heifer_death_percentage = (@heifer_deaths.count.to_f / @heifers.count.to_f) * 100
+    @hf = @farm.heifers_first
+    @hfc = @farm.heifer_first_calved
 
-    @first_time_heifers = @heifers.select { |h| h.birth_date.year == @year_minus_2 }
-    @first_time_heifers_calved = @first_time_heifers.select { |h| h.calf_birth_date != nil }
-    @first_time_calvers_percentage = (@first_time_heifers_calved.count.to_f / @first_time_heifers.count.to_f).round(2) * 100
+    # First time calving rate
+    @ftc_perc = percentage(@hf, @hfc)
 
-    # heifer replacement
-    @hr = @heifers.where(calf_sex: "F").where(calf_fate: "Reared")
-    @hr_percentage = (@hr.count.to_f / @farm.animals_calved.count.to_f).round(2) * 100
+    # Herd calving rate
+    @hcr_perc = percentage(@heifers, @farm.heifers_calved)
 
-    # calf death rate
-    @cdr = @heifers.where(calf_fate: "Died")
-    @cdr_percentage = (@cdr.count.to_f / @farm.calves.count.to_f).round(2) * 100
+    # Cow death rate
+    @cow_dr = percentage(@heifers, @farm.heifers_died)
 
-    @animals_calved_percentage = (@animals_calved_count.to_f / @heifers_count.to_f).round(2) * 100
+    # Heifer Replcament rate
+    @hr_perc = percentage(@heifers, @farm.heifers_calved)
 
-    # time ranges
-    time_range = (1.days.ago..Time.now)
-    @today = @farm.calves.where(birth_date: time_range)
-    time_range = (1.weeks.ago..Time.now)
-    @this_week = @farm.calves.where(birth_date: time_range)
-    time_range = (1.months.ago..Time.now)
-    @this_month = @farm.calves.where(birth_date: time_range)
-    time_range = (1.years.ago..Time.now)
-    @this_year = @farm.animals.where(birth_date: time_range)
+    # Calf death rate
+    @calf_dr = percentage(@calves, @farm.calves_died)
 
+    # Calving stats for time range
+    @day = day
+    @week = week
+    @month = month
+    @season = season
   end
 
   private
@@ -44,4 +42,25 @@ class FarmsController < ApplicationController
   def set_farm
     @farm = Farm.find(params[:id])
   end
+
+  def percentage(a, b)
+    ((b.count.to_f / a.count.to_f) * 100).round(2)
+  end
+
+  def day
+    @calves.where(birth_date: (1.days.ago..Time.now))
+  end
+
+  def week
+    @calves.where(birth_date: (1.weeks.ago..Time.now))
+  end
+
+  def month
+    @calves.where(birth_date: (1.months.ago..Time.now))
+  end
+
+  def season
+    @calves.where(birth_date: (1.years.ago..Time.now))
+  end
+
 end

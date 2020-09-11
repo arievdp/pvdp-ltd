@@ -29,14 +29,14 @@
 
         <div class="flex flex-row justify-between mb-3">
             <div class="">
-                <h4 class="text-gray-600 font-thin">18 Born Calving Rate</h4>
+                <h4 class="text-gray-600 font-thin"><%= @year_minus_2 %> born calving rate</h4>
                 <p class="text-gray-400 text-xs font-hairline">Percentage of <%= @year_minus_2 %> borns calved</p>
             </div>
             <div class="text-sm font-medium">
-              <% if @first_time_calvers_percentage > 75 %>
-                <span class="text-green-400">+</span> <%= @first_time_calvers_percentage %>%
+              <% if @ftc_perc > 75 %>
+                <span class="text-green-400">+</span> <%= @ftc_perc %>%
               <% else %>
-                <span class="text-red-400">-</span> <%= @first_time_calvers_percentage %>%
+                <span class="text-red-400">-</span> <%= @ftc_perc %>%
               <% end %>
             </div>
         </div>
@@ -47,10 +47,10 @@
                 <p class="text-gray-400 text-xs font-hairline">Percentage of herd calved</p>
             </div>
             <div class="text-sm font-medium">
-              <% if @animals_calved_percentage > 60 %>
-                <span class="text-green-400">+</span> <%= @animals_calved_percentage %>%
+              <% if @hcr_perc > 60 %>
+                <span class="text-green-400">+</span> <%= @hcr_perc %>%
               <% else %>
-                <span class="text-red-400">-</span> <%= @animals_calved_percentage %>%
+                <span class="text-red-400">-</span> <%= @hcr_perc %>%
               <% end %>
             </div>
         </div>
@@ -58,13 +58,13 @@
         <div class="flex flex-row justify-between mb-3">
           <div class="">
             <h4 class="text-gray-600 font-thin">Cow Death Rate</h4>
-            <p class="text-gray-400 text-xs font-hairline">Percentage of heifers that died during calving <%= Date.today.year %></p>
+            <p class="text-gray-400 text-xs font-hairline">Percentage of heifers that died</p>
         </div>
           <div class="text-sm font-medium">
-            <% if @heifer_death_percentage < 2 %>
-              <span class="text-green-400">+</span> <%= number_with_precision @heifer_death_percentage, precision: 2 %>%
+            <% if @cow_dr < 2 %>
+              <span class="text-green-400">+</span> <%= @cow_dr %>%
             <% else %>
-              <span class="text-red-400">-</span> <%= number_with_precision @heifer_death_percentage, precision: 2 %>%
+              <span class="text-red-400">-</span> <%= @cow_dr %>%
             <% end %>
           </div>
         </div>
@@ -75,10 +75,10 @@
             <p class="text-gray-400 text-xs font-hairline"><%= @year %> born heifer calves</p>
           </div>
           <div class="text-sm font-medium">
-            <% if @hr_percentage > 25 %>
-              <span class="text-green-400">+</span> <%= @hr_percentage %>%
+            <% if @hr_perc > 25 %>
+              <span class="text-green-400">+</span> <%= @hr_perc %>%
             <% else %>
-              <span class="text-red-400">-</span> <%= @hr_percentage %>%
+              <span class="text-red-400">-</span> <%= @hr_perc %>%
             <% end %>
           </div>
         </div>
@@ -89,10 +89,10 @@
               <p class="text-gray-400 text-xs font-hairline">Percentage of calfs that died in <%= @year %></p>
           </div>
           <div class="text-sm font-medium">
-            <% if @cdr_percentage < 2 %>
-              <span class="text-green-400">+</span> <%= @cdr_percentage %>%
+            <% if @calf_dr < 2 %>
+              <span class="text-green-400">+</span> <%= @calf_dr %>%
             <% else %>
-              <span class="text-red-400">-</span> <%= @cdr_percentage %>%
+              <span class="text-red-400">-</span> <%= @calf_dr %>%
             <% end %>
           </div>
         </div>
@@ -102,16 +102,16 @@
 
         <!-- bottom -->
         <div class="p-5">
-          <h2 class="font-bold text-lg mb-2">Percentage of Heifers Calved <%= @animals_calved_percentage %>%</h2>
+          <h2 class="font-bold text-lg mb-2">Percentage of Heifers Calved <%= @hcr_perc %>%</h2>
           <strong class="text-teal-400 font-extrabold text-xl"></strong>
           <div class="bg-gray-300 h-2 rounded-full mt-2 relative">
-            <% if @animals_calved_percentage < 25 %>
+            <% if @hcr_perc < 25 %>
               <div class="rounded-full bg-teal-400 h-full w-1/8 shadow-md"></div>
-            <% elsif @animals_calved_percentage < 50 %>
+            <% elsif @hcr_perc < 50 %>
               <div class="rounded-full bg-teal-400 h-full w-1/4 shadow-md"></div>
-            <% elsif @animals_calved_percentage < 75 %>
+            <% elsif @hcr_perc < 75 %>
               <div class="rounded-full bg-teal-400 h-full w-1/2 shadow-md"></div>
-            <% elsif @animals_calved_percentage < 100 %>
+            <% elsif @hcr_perc < 100 %>
               <div class="rounded-full bg-teal-400 h-full w-full shadow-md"></div>
             <% end %>
           </div>

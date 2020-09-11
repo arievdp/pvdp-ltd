@@ -1,0 +1,30 @@
+<div class="card">
+
+    <div class="card-body">
+      <div class="flex flex-row justify-between items-center">
+          <h1 class="font-extrabold text-lg">Farm comparison</h1>
+      </div>
+
+      <table class="table-auto w-full mt-5 text-left">
+
+        <thead>
+          <tr>
+            <td class="py-4 font-extrabold text-sm">Farm</td>
+            <td class="py-4 font-extrabold text-sm">CVR</td>
+            <td class="py-4 font-extrabold text-sm">HR</td>
+            <td class="py-4 font-extrabold text-sm">HDR</td>
+            <td class="py-4 font-extrabold text-sm">HR</td>
+            <td class="py-4 font-extrabold text-sm">CVDR</td>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @farms.each do |f| %>
+            <%= render 'shared/farms/farm-comparison-card', f: f %>
+          <% end %>
+        </tbody>
+
+      </table>
+
+    </div>
+</div>

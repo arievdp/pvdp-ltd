@@ -38,14 +38,15 @@ Employment.create!(
 )
 
 p 'Done!'
-p 'Reading CSV'
+p 'Reading CSV files'
 p '-----------------------'
-data = SmarterCSV.process("./app/assets/csv/PQVV-SN54 ORANGE PQVV HERD PROFILE 20_21 PVDP APP-09 Sep 2020.csv")
+data1 = SmarterCSV.process("./app/assets/csv/PQVV-SN54 ORANGE PQVV HERD PROFILE 20_21 PVDP APP-09 Sep 2020.csv")
+
 p 'Done!'
 
-p 'Creating animals'
+p 'Creating animals - Farm 1'
 p '-----------------------'
-data.each do |d|
+data1.each do |d|
   begin
     if d[:animal_birth_id_1].present?
       Animal.create!(
@@ -106,6 +107,5 @@ data.each do |d|
     end
   end
 end
-
 p 'Done!'
 p 'Seeding succesful!'
