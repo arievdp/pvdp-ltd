@@ -1,10 +1,11 @@
 class FarmsController < ApplicationController
   # Controller for farms and farm stats
   before_action :set_farm, only: :show
+  before_action :set_farms, only: [:index, :show]
+
+  def index; end
 
   def show
-    @farms = Farm.all
-
     # Set year for views
     @year_minus_2 = (Date.today.year - 2)
 
@@ -13,22 +14,22 @@ class FarmsController < ApplicationController
     @calves = @farm.calves
     @heifers = @farm.heifers
     @hf = @farm.heifers_first
-    @hfc = @farm.heifer_first_calved
+    @hfc = @farm.heifers_first_calved
 
     # First time calving rate
-    @ftc_perc = percentage(@hf, @hfc)
+    @ftc_perc = @farm.stat_ftc
 
     # Herd calving rate
-    @hcr_perc = percentage(@heifers, @farm.heifers_calved)
+    @hcr_perc = @farm.stat_hcr
 
     # Cow death rate
-    @cow_dr = percentage(@heifers, @farm.heifers_died)
+    @cow_dr = @farm.stat_cow_dr
 
-    # Heifer Replcament rate
-    @hr_perc = percentage(@heifers, @farm.heifers_calved)
+    # Heifer Replacment rate
+    @hr_perc = @farm.stat_hrr
 
     # Calf death rate
-    @calf_dr = percentage(@calves, @farm.calves_died)
+    @calf_dr = @farm.stat_calf_dr
 
     # Calving stats for time range
     @day = day
@@ -41,6 +42,10 @@ class FarmsController < ApplicationController
 
   def set_farm
     @farm = Farm.find(params[:id])
+  end
+
+  def set_farms
+    @farms = Farm.all
   end
 
   def percentage(a, b)

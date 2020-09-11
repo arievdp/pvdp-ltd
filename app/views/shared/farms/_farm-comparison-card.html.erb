@@ -1,12 +1,12 @@
 <tr class="">
   <td class="py-4 text-sm text-gray-600 flex flex-row items-center">
-      <%= f.code %>
+      <%= link_to f.code, farm_path(f) %>
   </td>
-  <td class="py-4 text-xs text-gray-600"><span class="num-2"></span>%</td>
-  <td class="py-4 text-xs text-gray-600"><span class="num-2"></span>%</td>
-  <td class="py-4 text-xs text-gray-600"><span class="num-2"></span>%</td>
-  <td class="py-4 text-xs text-gray-600"><span class="num-2"></span>%</td>
-  <td class="py-4 text-xs text-gray-600"><span class="num-2"></span>%</td>
+  <td class="py-4 text-xs text-gray-600"><%= f.stat_ftc %></span>%</td>
+  <td class="py-4 text-xs text-gray-600"><%= f.stat_hcr %></span>%</td>
+  <td class="py-4 text-xs text-gray-600"><%= f.stat_cow_dr %></span>%</td>
+  <td class="py-4 text-xs text-gray-600"><%= f.stat_calf_dr %></span>%</td>
+  <td class="py-4 text-xs text-gray-600"><%= f.stat_hrr %></span>%</td>
 </tr>
 
 

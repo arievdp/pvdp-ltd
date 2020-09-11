@@ -32,7 +32,7 @@ class Farm < ApplicationRecord
     animals.where(status: 'Heifer').where(birth_date: (3.years.ago..Time.now))
   end
 
-  def heifer_first_calved
+  def heifers_first_calved
     animals.where(status: 'Heifer').where(birth_date: (3.years.ago..Time.now)).where.not(calving_date: [nil, false])
   end
 
@@ -47,4 +47,39 @@ class Farm < ApplicationRecord
   def calves_died_bobbied
     animals.where(status: 'Hiefer').where(calf_fate: ['Died', 'Bobbied'])
   end
+
+  # Statistics
+  ###################
+
+  # Herd calving rate
+  def stat_hcr
+    percentage(self.heifers, self.heifers_calved)
+  end
+
+  # First time calving rate
+  def stat_ftc
+    percentage(self.heifers_first, self.heifers_first_calved)
+  end
+
+  # Cow death rate
+  def stat_cow_dr
+    percentage(self.heifers, self.heifers_died)
+  end
+
+  # Heifer Replacment rate
+  def stat_hrr
+    percentage(self.heifers, self.calves)
+  end
+
+  # Calf death rate
+  def stat_calf_dr
+    percentage(self.calves, self.calves_died)
+  end
+
+  private
+
+  def percentage(a, b)
+    ((b.count.to_f / a.count.to_f) * 100).round(2)
+  end
+
 end

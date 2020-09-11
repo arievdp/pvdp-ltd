@@ -3,6 +3,7 @@
     <div class="card-body">
       <div class="flex flex-row justify-between items-center">
           <h1 class="font-extrabold text-lg">Farm comparison</h1>
+          <a href="#" class="btn-gray text-sm">view all</a>
       </div>
 
       <table class="table-auto w-full mt-5 text-left">
@@ -10,11 +11,12 @@
         <thead>
           <tr>
             <td class="py-4 font-extrabold text-sm">Farm</td>
-            <td class="py-4 font-extrabold text-sm">CVR</td>
-            <td class="py-4 font-extrabold text-sm">HR</td>
-            <td class="py-4 font-extrabold text-sm">HDR</td>
-            <td class="py-4 font-extrabold text-sm">HR</td>
-            <td class="py-4 font-extrabold text-sm">CVDR</td>
+            <td class="py-4 font-extrabold text-sm"><%= (@year_minus_2).to_s[2..3] %> CR</td>
+            <td class="py-4 font-extrabold text-sm">H CR</td>
+            <td class="py-4 font-extrabold text-sm">H DR</td>
+            <td class="py-4 font-extrabold text-sm">CV DR</td>
+            <td class="py-4 font-extrabold text-sm">H R</td>
+
           </tr>
         </thead>
 
