@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to: 'farms#index'
   get '/dashboard', to: 'pages#index'
+  get '/upload', to: 'pages#upload'
   resources :farms, only: [:index, :show]
 
   devise_for :users

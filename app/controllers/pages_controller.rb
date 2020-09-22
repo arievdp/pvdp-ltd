@@ -5,4 +5,8 @@ class PagesController < ApplicationController
 
   def index
   end
+
+  def upload
+    @farms = Farm.all
+  end
 end
