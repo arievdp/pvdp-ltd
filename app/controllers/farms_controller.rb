@@ -1,6 +1,6 @@
 class FarmsController < ApplicationController
   # Controller for farms and farm stats
-  before_action :set_farm, only: :show
+  before_action :set_farm, only: [:show]
   before_action :set_farms, only: [:index, :show]
 
   def index; end
@@ -38,7 +38,16 @@ class FarmsController < ApplicationController
     @season = season
   end
 
+  def process_csv
+    farm_params
+    @farm = Farm.find(farm_params[:farm])
+  end
+
   private
+
+  def farm_params
+    params.require(:farm).permit(:farm, :file)
+  end
 
   def set_farm
     @farm = Farm.find(params[:id])
