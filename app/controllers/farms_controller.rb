@@ -39,8 +39,9 @@ class FarmsController < ApplicationController
   end
 
   def process_csv
-    farm_params
     @farm = Farm.find(farm_params[:farm])
+    @csv = farm_params[:file]
+    raise
   end
 
   private
@@ -57,6 +58,7 @@ class FarmsController < ApplicationController
     @farms = Farm.all
   end
 
+  # methods for statistics
   def percentage(a, b)
     ((b.count.to_f / a.count.to_f) * 100).round(2)
   end
