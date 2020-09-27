@@ -2,6 +2,7 @@ class Animal < ApplicationRecord
   belongs_to :farm
   validates :birth_id, presence: true, uniqueness: true
   before_create :heifer?
+  before_save :duplicate?
 
   def calved?
     calf_birth_date.present?
@@ -23,5 +24,8 @@ class Animal < ApplicationRecord
     else
       a[:status] = 'Heifer'
     end
+  end
+
+  def duplicate?
   end
 end
