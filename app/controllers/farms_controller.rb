@@ -7,6 +7,7 @@ class FarmsController < ApplicationController
 
   def show
     # Set year for views
+    @year = Date.today.year
     @year_minus_2 = (Date.today.year - 2)
 
     # Set animal numbers
@@ -39,9 +40,9 @@ class FarmsController < ApplicationController
   end
 
   def process_csv
-    f = Farm.where(code: farm_params[:file].original_filename[0..8])
+    f = Farm.find_by(code: farm_params[:file].original_filename[0..8])
     Animal.import(farm_params, f)
-    redirect_to farm_path(f.ids)
+    redirect_to farm_path(f)
   end
 
   private
