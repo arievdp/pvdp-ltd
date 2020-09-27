@@ -39,9 +39,9 @@ class FarmsController < ApplicationController
   end
 
   def process_csv
-    f = Farm.find(farm_params[:farm])
+    f = Farm.where(code: farm_params[:file].original_filename[0..8])
     Animal.import(farm_params, f)
-    redirect_to farm_path(f)
+    redirect_to farm_path(f.ids)
   end
 
   private
