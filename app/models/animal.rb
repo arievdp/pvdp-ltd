@@ -1,6 +1,6 @@
 class Animal < ApplicationRecord
   belongs_to :farm
-  validates :birth_id, presence: true, uniqueness: true
+  validates :birth_id, uniqueness: { scope: :cow_number }
   before_create :set_birth_date, :heifer?
   before_update :heifer?
 
@@ -18,6 +18,10 @@ class Animal < ApplicationRecord
       create_heifer(a, f) if a[:birth_id].present?
       create_calf(a, f) if a[:calf_birth_id].present?
     end
+  end
+
+  def self.duplicate_birth_ids?
+    Animal.select(:birth_id).group(:birth_id).having("count(*) > 1")
   end
 
   private
@@ -53,7 +57,7 @@ class Animal < ApplicationRecord
   end
 
   def self.create_heifer(a, f)
-    n = Animal.find_or_create_by(birth_id: a[:birth_id])
+    n = Animal.where(cow_number: a[:cow_number], birth_id: a[:birth_id]).first_or_create
     n.update_attributes(
       farm: f,
       birth_id: a[:birth_id],
