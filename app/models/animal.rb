@@ -96,10 +96,6 @@ class Animal < ApplicationRecord
     )
   end
 
-  # def self.duplicate?(a)
-  #   Animal.where(birth_id: a[:birth_id]).exists?
-  # end
-
   def self.set_date(a)
     Date.parse(a) unless a.nil?
   end
