@@ -2,8 +2,7 @@ class Animal < ApplicationRecord
   belongs_to :farm
   validates :birth_id, uniqueness: { scope: :cow_number }
   before_create :set_birth_date, :heifer?
-  before_update :heifer?, :set_birth_date
-
+  before_update :set_birth_date, :heifer?
   def calved?
     calf_birth_date.present?
   end

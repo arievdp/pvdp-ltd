@@ -43,7 +43,6 @@ p '-----------------------'
 data_sn54 = SmarterCSV.process("./app/assets/csv/PQVV-SN54 ORANGE PQVV HERD PROFILE 20_21 PVDP APP-09 Sep 2020.csv")
 data_sn25 = SmarterCSV.process("./app/assets/csv/HKYM-SN25 PURPLE HKYM HERD PROFILE 20_21 PVDP APP-08 Sep 2020.csv")
 
-
 p 'Done!'
 
 # p 'Creating animals - Farm 1'
@@ -174,6 +173,5 @@ p 'Done!'
 #     end
 #   end
 # end
-# p 'Done!'
-
+# 
 p 'Seeding succesful!'
