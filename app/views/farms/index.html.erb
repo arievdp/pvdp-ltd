@@ -1,11 +1,5 @@
-<!-- start content -->
-<div class="bg-gray-100 flex-1 p-6 md:mt-16 mx-auto">
-
-  <!-- congrats & summary -->
-  <div class="flex flex-wrap w-full">
-    <% @farms.each do |f| %>
-      <%= render 'farm-card', f: f %>
-    <% end %>
-  </div>
+<div class="flex flex-wrap w-full">
+  <% @farms.each do |f| %>
+    <%= render 'farm-card', f: f %>
+  <% end %>
 </div>
-<!-- end content -->

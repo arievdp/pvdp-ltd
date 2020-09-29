@@ -39,10 +39,6 @@ class FarmsController < ApplicationController
     @season = season
   end
 
-  def show_animals
-
-  end
-
   def process_csv
     f = Farm.find_by(code: farm_params[:file].original_filename[0..8])
     Animal.import(farm_params, f)

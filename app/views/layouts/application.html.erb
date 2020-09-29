@@ -6,7 +6,9 @@
     <%= render 'shared/base/navbar' %>
     <div class="h-screen flex flex-row flex-wrap">
       <%= render 'shared/base/sidebar' if current_user.present? %>
-      <%= content_for?(:content) ? yield(:content) : yield %>
+      <div class="bg-gray-100 flex-1 p-6 md:mt-16 mx-auto">
+        <%= content_for?(:content) ? yield(:content) : yield %>
+      </div>
     </div>
     <%= render 'shared/base/end' %>
   </body>

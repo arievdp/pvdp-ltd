@@ -1,29 +1,13 @@
-<!-- start wrapper -->
+<div class="grid grid-cols-3 lg:grid-cols-1 gap-5">
+  <%= render 'shared/farms/calving-overview' %>
+  <%= render 'shared/farms/calving-summary' %>
+</div>
 
+<%= render 'shared/farms/calving-stats' %>
 
-  <!-- start content -->
-  <div class="bg-gray-100 flex-1 p-6 md:mt-16">
+<div class="grid grid-cols-2 lg:grid-cols-1 gap-5 mt-5">
+  <%= render 'shared/farms/calving-farm-comparison' %>
+  <%= render 'shared/farms/calving-recent-calves' %>
+</div>
 
-    <!-- congrats & summary -->
-    <div class="grid grid-cols-3 lg:grid-cols-1 gap-5">
-      <%= render 'shared/farms/calving-overview' %>
-      <%= render 'shared/farms/calving-summary' %>
-    </div>
-    <!-- end congrats & summary -->
-
-    <!-- status -->
-    <%= render 'shared/farms/calving-stats' %>
-    <!-- end status -->
-
-    <!-- best seller & traffic -->
-    <div class="grid grid-cols-2 lg:grid-cols-1 gap-5 mt-5">
-      <%= render 'shared/farms/calving-farm-comparison' %>
-      <%= render 'shared/farms/calving-recent-calves' %>
-    </div>
-    <!-- end best seller & traffic -->
-
-  </div>
-  <!-- end content -->
-  
-<!-- end wrapper -->
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
