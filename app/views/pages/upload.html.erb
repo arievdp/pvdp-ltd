@@ -1,7 +1,9 @@
-<div class="w-1/2 m-auto">
-  <%= simple_form_for :farm do |f| %>
-    <%# <%= f.input :farm, collection: @farms.map { |fa| [fa.code, fa.id, {name: fa.code} ] } %>
-    <%= f.input :file, as: :file, label: "CSV" %>
-    <%= f.button :submit, 'Upload File' %>
-  <% end %>
+<div class="w-full max-w-md mx-auto my-8">
+  <div class="bg-white border border-gray-300 rounded-lg px-8 pt-6 pb-8">
+    <%= simple_form_for :farm do |f| %>
+      <%# <%= f.input :farm, collection: @farms.map { |fa| [fa.code, fa.id, {name: fa.code} ] } %>
+      <%= f.input :file, as: :file, label: "CSV" %>
+      <%= f.button :submit, 'Upload File' %>
+    <% end %>
+  </div>
 </div>
