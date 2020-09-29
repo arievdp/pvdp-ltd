@@ -20,7 +20,7 @@ class Animal < ApplicationRecord
   end
 
   def self.duplicate_birth_ids?
-    Animal.select(:birth_id).group(:birth_id).having("count(*) > 1")
+    Animal.where(birth_id: Animal.select(:birth_id).group(:birth_id).having("count(*) > 1").birth_id)
   end
 
   private
