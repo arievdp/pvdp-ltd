@@ -4,7 +4,10 @@
   <body class="bg-gray-100">
     <%= render "shared/flash_notice" %>
     <%= render 'shared/base/navbar' %>
-    <%= content_for?(:content) ? yield(:content) : yield %>
+    <div class="h-screen flex flex-row flex-wrap">
+      <%= render 'shared/base/sidebar' if current_user.present? %>
+      <%= content_for?(:content) ? yield(:content) : yield %>
+    </div>
     <%= render 'shared/base/end' %>
   </body>
 </html>

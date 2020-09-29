@@ -1,6 +1,6 @@
 class FarmsController < ApplicationController
   # Controller for farms and farm stats
-  before_action :set_farm, only: [:show]
+  before_action :set_farm, only: [:show, :show_animals]
   before_action :set_farms, only: [:index, :show]
 
   def index; end
@@ -37,6 +37,10 @@ class FarmsController < ApplicationController
     @week = week
     @month = month
     @season = season
+  end
+
+  def show_animals
+
   end
 
   def process_csv
