@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   post '/upload', to: 'farms#process_csv'
   resources :farms, only: [:index, :show]
   resources :farms do
-    :show_animals
+    resources :animals
   end
 
   devise_for :users
