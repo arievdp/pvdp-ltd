@@ -5,6 +5,10 @@ class AnimalsController < ApplicationController
         @animals = @farm.animals
     end
 
+    def duplicates
+        @animals = Animal.duplicates?
+    end
+
     private
 
     def set_farm

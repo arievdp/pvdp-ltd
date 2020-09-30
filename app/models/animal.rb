@@ -3,6 +3,7 @@ class Animal < ApplicationRecord
   validates :birth_id, uniqueness: { scope: :cow_number }
   before_create :set_birth_date, :heifer?
   before_update :set_birth_date, :heifer?
+
   def calved?
     calf_birth_date.present?
   end
@@ -19,8 +20,8 @@ class Animal < ApplicationRecord
     end
   end
 
-  def self.duplicate_birth_ids?
-    Animal.where(birth_id: Animal.select(:birth_id).group(:birth_id).having("count(*) > 1").birth_id)
+  def self.duplicates?
+    Animal.where(birth_id: Animal.select(:birth_id).group(:birth_id).having("count(*) > 1")).order(:birth_id)
   end
 
   private
