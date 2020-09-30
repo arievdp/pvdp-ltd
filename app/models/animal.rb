@@ -27,7 +27,7 @@ class Animal < ApplicationRecord
   private
 
   def self.csv_options
-    # Use these keys to change the defauly naming of the CSV columns
+    # Use these keys to change the defauly naming of the CSV columns from MINDA
     {
       key_mapping: 
       {
