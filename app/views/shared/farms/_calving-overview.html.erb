@@ -14,10 +14,12 @@
             <h1 class="font-extrabold text-4xl text-teal-400"><%= @farm.heifers.count %></h1>
             <p class="mt-3 mb-4 text-xs text-gray-500">Hiefers on Farm</p>
           </div>
-
+        
           <div class="flex-1">
-            <h1 class="font-extrabold text-4xl text-teal-400"><%= @farm.heifers_first.count %></h1>
-            <p class="mt-3 mb-4 text-xs text-gray-500"><%= @year_minus_2 %> borns</p>
+            <%= link_to farm_animals_path(@farm) do %>
+              <h1 class="font-extrabold text-4xl text-teal-400"><%= @farm.heifers_first.count %></h1>
+              <p class="mt-3 mb-4 text-xs text-gray-500"><%= @year_minus_2 %> borns</p>
+            <% end %>
           </div>
 
         </div>
