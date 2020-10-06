@@ -13,7 +13,7 @@ let environment = {
   ]
 };
 
-Only run PurgeCSS in production
+// Only run PurgeCSS in production
 if (process.env.RAILS_ENV === 'production') {
   environment.plugins.push(
     require('@fullhuman/postcss-purgecss')({
