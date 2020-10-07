@@ -1,5 +1,30 @@
 <div class="w-full max-w-md mx-auto my-8">
   <div class="bg-white border border-gray-300 rounded-lg px-8 pt-6 pb-8">
-    <%= yield :devise_form %>
+    <%= simple_form_for(@animal) do |f| %>
+       <%= f.input :farm_id %>
+       <%= f.input :birth_id %>
+       <%= f.input :cow_number %>
+       <%= f.input :birth_date, as: :date, html5: true %>
+       <%= f.input :bw_value %>
+       <%= f.input :bw_reliability %>
+       <%= f.input :pw_value %>
+       <%= f.input :pw_reliability %>
+       <%= f.input :a2_status %>
+       <%= f.input :sex %>
+       <%= f.input :status %>
+       <%= f.input :fate %>
+       <%= f.input :expected_calving_date, as: :date, html5: true %>
+       <%= f.input :calving_date, as: :date, html5: true %>
+       <%= f.input :calf_birth_id %>
+       <%= f.input :calf_birth_date, as: :date, html5: true %>
+       <%= f.input :calf_sex %>
+       <%= f.input :dam_birth_id %>
+       <%= f.input :dam_cow_number %>
+       <%= f.input :sire_birth_id %>
+       <%= f.input :sire_name %>
+    <% end %>
+    <%= link_to 'Update', edit_animal_path(@animal) %>
+    <br>
+    <%= link_to 'Delete', edit_animal_path(@animal) %>
   </div>
 </div>

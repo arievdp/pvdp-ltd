@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   get '/duplicates', to: 'animals#duplicates'
   post '/upload', to: 'farms#process_csv'
   resources :farms, only: [:index, :show]
+  resources :animals, only: [:edit, :update, :destroy]
   resources :farms do
-    resources :animals
+    resources :animals, only: [:index, :show]
   end
 
   devise_for :users

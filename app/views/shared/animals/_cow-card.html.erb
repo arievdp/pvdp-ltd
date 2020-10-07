@@ -15,7 +15,7 @@
         <div class="text-sm leading-5 text-gray-900"><%= animal.status %></div>
     </td>
     <td class="px-4 py-4 whitespace-no-wrap font-medium">
-        <%= link_to edit_farm_animal_path(animal[:farm_id], animal[:id]) do %>
+        <%= link_to edit_animal_path(animal) do %>
             <p class="text-indigo-600 hover:text-indigo-900">Edit</p>
         <% end %>
     </td>
