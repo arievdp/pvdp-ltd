@@ -5,14 +5,15 @@ var alert_button = document.getElementsByClassName("alert-btn-close");
 for (let i = 0; i < alert_button.length; i++) {
     const btn = alert_button[i];
 
-    btn.addEventListener('click' , function(){
-        var dad = this.parentNode;
-        dad.classList.add('animated' , 'fadeOut');
-        setTimeout(() => {
-            dad.remove();
-        }, 1000);
-    });
-
+    if(btn){
+        btn.addEventListener('click' , function(){
+          var dad = this.parentNode;
+          dad.classList.add('animated' , 'fadeOut');
+          setTimeout(() => {
+              dad.remove();
+          }, 1000);
+        });
+    }
 }
 // check if the page have dropdwon menu
 var dropdown = document.getElementsByClassName('dropdown');
@@ -111,7 +112,9 @@ var navbarToggle = document.getElementById('navbarToggle'),
 
 
 
-navbarToggle.addEventListener('click' , function(){
+if(navbarToggle){
+
+  navbarToggle.addEventListener('click' , function(){
 
     if (navbar.classList.contains('md:hidden')) {
         navbar.classList.remove('md:hidden');
@@ -135,9 +138,9 @@ navbarToggle.addEventListener('click' , function(){
         };
 
         animate();
-    };
-
-});
+      };
+  });
+}
 var num = function(from , to){
     return Math.floor(Math.random() * to)  + from;
 };
