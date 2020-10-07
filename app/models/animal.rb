@@ -3,6 +3,7 @@ class Animal < ApplicationRecord
   validates :birth_id, uniqueness: { scope: :cow_number }
   before_create :set_birth_date, :heifer?
   before_update :set_birth_date, :heifer?
+  include PgSearch::Model
 
   def calved?
     calf_birth_date.present?
