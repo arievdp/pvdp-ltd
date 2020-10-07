@@ -79,6 +79,10 @@ form input[type="submit"] {
   @apply mb-6;
 }
 
+.input-group-lat {
+  @apply p-2 mb-6 w-1/4 truncate;
+}
+
 .form-actions {
   @apply mb-6;
 }
