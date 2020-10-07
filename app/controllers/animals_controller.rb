@@ -1,9 +1,11 @@
 class AnimalsController < ApplicationController
-    before_action :set_farm, only: [:index, :update]
+    before_action :set_farm, only: [:update]
     before_action :set_animal, only: [:edit, :update]
+    helper_method :sort_column, :sort_direction
 
     def index
-        @animals = @farm.animals
+        @farm = Farm.find(params[:farm_id])
+        @animals = @farm.animals.order(sort_column + " " + sort_direction)
     end
 
     def edit
@@ -31,6 +33,14 @@ class AnimalsController < ApplicationController
 
     def set_farm
         @farm = Farm.find(animal_params[:farm_id])
+    end
+
+    def sort_column
+        Animal.column_names.include?(params[:sort]) ? params[:sort] : 'name'
+    end
+
+    def sort_direction
+        %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
     end
 
     def animal_params
