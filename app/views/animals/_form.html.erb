@@ -1,0 +1,27 @@
+<%= simple_form_for(resource) do |f| %>
+    <%= f.error_notification %>
+    <div class="flex content-start flex-wrap h-48">
+        <div class="input-group-lat"><%= f.input :farm_id %></div>
+        <div class="input-group-lat"><%= f.input :birth_id, label: 'Birth ID' %></div>
+        <div class="input-group-lat"><%= f.input :cow_number %></div>
+        <div class="input-group-lat"><%= f.input :sex %></div>
+        <div class="input-group-lat"><%= f.input :bw_value %></div>
+        <div class="input-group-lat"><%= f.input :bw_reliability %></div>
+        <div class="input-group-lat"><%= f.input :pw_value %></div>
+        <div class="input-group-lat"><%= f.input :pw_reliability %></div>
+        <div class="input-group-lat"><%= f.input :a2_status %></div>
+        <div class="input-group-lat"><%= f.input :status %></div>
+        <div class="input-group-lat"><%= f.input :calf_birth_id, label: 'Calf Birth ID' %></div>
+        <div class="input-group-lat"><%= f.input :calf_sex %></div>
+        <div class="input-group-lat"><%= f.input :dam_birth_id, label: 'Dam Birth ID'%></div>
+        <div class="input-group-lat"><%= f.input :dam_cow_number %></div>
+        <div class="input-group-lat"><%= f.input :sire_birth_id, label: 'Sire Birth ID' %></div> 
+        <div class="input-group-lat"><%= f.input :sire_name %></div> 
+        <div class="input-group-lat"><%= f.input :birth_date, as: :date, html5: true %></div>
+        <div class="input-group-lat"><%= f.input :expected_calving_date, as: :date, html5: true %></div>
+        <div class="input-group-lat"><%= f.input :calving_date, as: :date, html5: true %></div>
+        <div class="input-group-lat"><%= f.input :calf_birth_date, as: :date, html5: true %></div>
+        <div class="input-group-lat"><%= f.input :fate %></div>
+        <%= f.submit %>
+    </div>
+<% end %>
