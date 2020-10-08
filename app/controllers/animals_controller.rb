@@ -1,6 +1,6 @@
 class AnimalsController < ApplicationController
     before_action :set_farm, only: [:update]
-    before_action :set_animal, only: [:edit, :update]
+    before_action :set_animal, only: [:edit, :update, :destroy]
     helper_method :sort_column, :sort_direction
 
     def index
@@ -21,6 +21,11 @@ class AnimalsController < ApplicationController
         end
     end
 
+    def destroy
+        @animal.destroy
+        redirect_to farm_animals_path(@animal[:farm_id], @animal[:id])
+    end
+
     def duplicates
         @animals = Animal.duplicates?
     end
@@ -36,7 +41,7 @@ class AnimalsController < ApplicationController
     end
 
     def sort_column
-        Animal.column_names.include?(params[:sort]) ? params[:sort] : 'name'
+        Animal.column_names.include?(params[:sort]) ? params[:sort] : 'birth_id'
     end
 
     def sort_direction

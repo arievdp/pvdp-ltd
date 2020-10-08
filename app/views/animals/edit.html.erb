@@ -3,7 +3,7 @@
         <%= link_to "Back", :back %>
     </div>
     <div class="mb-6 px-6 text-teal-300">
-        <%= link_to 'Delete', edit_animal_path(@animal) %> 
+        <%= button_to 'Delete', animal_path(@animal), method: :delete %>
     </div> 
 </div>
 <%= render 'form', resource: @animal %>
