@@ -4,7 +4,8 @@ class Animal < ApplicationRecord
   before_create :set_birth_date, :heifer?
   before_update :set_birth_date, :heifer?
   include PgSearch::Model
-
+  pg_search_scope :search_by_birth_id, against: :birth_id, using: { tsearch: { prefix: true } }
+  
   def calved?
     calf_birth_date.present?
   end
